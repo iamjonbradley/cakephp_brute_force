@@ -1,0 +1,78 @@
+h1. Brute Force Detection Plugin
+
+Simple brute force login detector
+
+h2. Background
+
+While developing an application we were getting 1000s of brute force attacks so 
+we decided to create a plugin to handle detection of this to block the users.
+
+h2. Requirements
+
+* PHP 5.3+
+* CakePHP 1.3
+* Minor intelligence
+
+h2. Get The Source
+
+_[Manual]_
+
+# Download this: http://github.com/jonbradley/Brute-Force-Detection/zipball/master
+# Unzip that download.
+# Copy the resulting folder to app/plugins
+# Rename the folder you just copied to @intrusion
+
+_[GIT Clone]_
+
+* In your plugin directory type
+ <pre><code>git clone git@github.com:jonbradley/Brute-Force-Detection.git brute_force</code></pre>
+
+
+h2. Installation
+
+* Import the database schema
+  <pre><code>./cake/console/cake schema -plugin intrusion create</code></pre>
+
+* Rename and update the config in detect/config/settings.php:
+
+* Include the detect component in your app_controller.php:
+  <pre><code>public $components = array('BruteForce.Detect');</code></pre>
+
+* Add the following to your beforeFilter
+  <pre><code>$this->set('blocked', $this->Detect->checkForPenalty());</code></pre>
+
+Now you can call $blocked anywhere you wish in your views
+
+h2. Options
+
+# max_penalty : time in seconds of the penalty
+# max_attempts : max number of attempts until the user is blocked
+# look_back : amount of time to look back to block a user
+# notify : email to nofiy of the block
+
+h2. Todo
+
+* Add new features, and no I have no clue what they should be right now
+
+h2. License
+
+Copyright (c) 2011 Jonathan Bradley
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
