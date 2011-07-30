@@ -31,7 +31,7 @@ _[GIT Clone]_
 h2. Installation
 
 * Import the database schema
-  <pre><code>./cake/console/cake schema -plugin intrusion create</code></pre>
+  <pre><code>./cake/console/cake schema -plugin brute_force_ create</code></pre>
 
 * Rename and update the config in detect/config/settings.php:
 
